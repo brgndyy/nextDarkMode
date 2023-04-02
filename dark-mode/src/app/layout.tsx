@@ -2,6 +2,7 @@ import "./globals.css";
 import Card from "@/components/Card/Card";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import ContentCard from "@/components/Card/ContentCard";
 
 export default function RootLayout({
   children,
@@ -10,7 +11,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Card>
+          <Header />
+          <ContentCard>{children}</ContentCard>
+        </Card>
+        <Footer />
+      </body>
     </html>
   );
 }

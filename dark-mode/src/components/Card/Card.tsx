@@ -1,5 +1,9 @@
 import classes from "./Card.module.css";
 
-export default function Card() {
-  return <div>Card</div>;
+type Children = {
+  children: React.ReactNode;
+};
+
+export default function Card({ children }: Children) {
+  return <div className={classes.card}>{children}</div>;
 }
