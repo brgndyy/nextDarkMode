@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+button{
+  background-color: var(--button-bg);
+  color: var(--text-color);
+}
+
 body{
   width: 100vw;
   height: 100vh;
@@ -20,10 +25,12 @@ body{
 body[data-theme="dark"]{
   --bg-main : #000;
   --text-color : #fff;
+  --button-bg : #000;
 }
 
 
 body[data-theme="light"]{
   --bg-main : rgb(228, 228, 228);
   --text-color : #000;
+  --button-bg : rgb(228, 228, 228);
 }

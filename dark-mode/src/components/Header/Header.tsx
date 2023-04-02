@@ -10,10 +10,9 @@ export default function Header() {
     setIsDarkMode(!isDarkMode);
     if (isDarkMode) {
       document.body.setAttribute("data-theme", "light");
-      console.log(document.body.dataset);
+      console.log(document.documentElement.dataset);
     } else {
       document.body.setAttribute("data-theme", "dark");
-      console.log(document.body.dataset);
     }
   };
   return (
