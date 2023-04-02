@@ -7,7 +7,7 @@
 *{
   box-sizing: border-box;
 }
-
+/* 버튼과 바디 등 필요한 변수들을 설정해줌으로써 값 지정해주기  */
 button{
   background-color: var(--button-bg);
   color: var(--text-color);
@@ -20,7 +20,10 @@ body{
   margin: 0;
   background: var(--bg-main);
   color: var(--text-color);
+  transition: background 0.3s ease;
 }
+
+/* data-theme 값에 따라서 변수값을 바꿔줌으로써 다크모드 구현*/
 
 body[data-theme="dark"]{
   --bg-main : #000;
