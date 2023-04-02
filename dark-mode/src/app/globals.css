@@ -1,3 +1,9 @@
+:root{
+  --bg-main : rgb(228, 228, 228);
+  --text-color : #000;
+  --button-bg : rgb(228, 228, 228); 
+}
+
 *{
   box-sizing: border-box;
 }
@@ -5,7 +11,19 @@
 body{
   width: 100vw;
   height: 100vh;
-  background: rgb(228, 228, 228);
   overflow: scroll;
   margin: 0;
+  background: var(--bg-main);
+  color: var(--text-color);
+}
+
+body[data-theme="dark"]{
+  --bg-main : #000;
+  --text-color : #fff;
+}
+
+
+body[data-theme="light"]{
+  --bg-main : rgb(228, 228, 228);
+  --text-color : #000;
 }
