@@ -14,11 +14,11 @@ export default function Header() {
   };
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "light"; // 기본값 "light" 추가
+    const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "dark") {
       document.body.setAttribute("data-theme", "dark");
       setIsDarkMode(true);
-    } else {
+    } else if (savedTheme === "light") {
       document.body.setAttribute("data-theme", "light");
       setIsDarkMode(false);
     }
