@@ -4,33 +4,45 @@ import classes from "./Header.module.css";
 import { useState, useEffect } from "react";
 
 export default function Header() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [darkTheme, setDarkTheme] = useState<boolean | undefined>(undefined);
+  const [IsDarkMode, setIsDarkMode] = useState(false);
 
-  const darkModeHandler = () => {
-    setIsDarkMode(!isDarkMode);
-    const theme = isDarkMode ? "light" : "dark";
-    localStorage.setItem("theme", theme);
-    document.body.setAttribute("data-theme", theme);
+  const handleToggle = () => {
+    setDarkTheme(!darkTheme);
   };
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      document.body.setAttribute("data-theme", "dark");
-      setIsDarkMode(true);
-    } else if (savedTheme === "light") {
-      document.body.setAttribute("data-theme", "light");
-      setIsDarkMode(false);
+    if (darkTheme !== undefined) {
+      if (darkTheme) {
+        document.body.setAttribute("data-theme", "dark");
+        window.localStorage.setItem("theme", "dark");
+        setIsDarkMode(true);
+      } else {
+        document.body.removeAttribute("data-theme");
+        window.localStorage.setItem("theme", "light");
+        setIsDarkMode(false);
+      }
     }
+  }, [darkTheme]);
+
+  useEffect(() => {
+    const root = window.document.body;
+    const initialColorValue = root.style.getPropertyValue(
+      "--initial-color-mode"
+    );
+
+    setDarkTheme(initialColorValue === "dark");
   }, []);
 
   return (
     <>
       <div className={classes.header_container}>
         <h1>헤더섹션</h1>
-        <button onClick={darkModeHandler}>
-          {isDarkMode ? "light-mode" : "dark-mode"}
-        </button>
+        {darkTheme !== undefined && (
+          <button onClick={handleToggle}>
+            {IsDarkMode ? "light-mode" : "dark-mode"}
+          </button>
+        )}
       </div>
     </>
   );
