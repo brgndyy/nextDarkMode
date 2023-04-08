@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 
 export default function Header() {
   const [darkTheme, setDarkTheme] = useState<boolean | undefined>(undefined);
-  const [IsDarkMode, setIsDarkMode] = useState(false);
 
   const handleToggle = () => {
     setDarkTheme(!darkTheme);
@@ -16,11 +15,9 @@ export default function Header() {
       if (darkTheme) {
         document.body.setAttribute("data-theme", "dark");
         window.localStorage.setItem("theme", "dark");
-        setIsDarkMode(true);
       } else {
         document.body.removeAttribute("data-theme");
         window.localStorage.setItem("theme", "light");
-        setIsDarkMode(false);
       }
     }
   }, [darkTheme]);
@@ -40,7 +37,7 @@ export default function Header() {
         <h1>헤더섹션</h1>
         {darkTheme !== undefined && (
           <button onClick={handleToggle}>
-            {IsDarkMode ? "light-mode" : "dark-mode"}
+            {darkTheme ? "light-mode" : "dark-mode"}
           </button>
         )}
       </div>
